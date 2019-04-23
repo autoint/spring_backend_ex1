@@ -1,3 +1,3 @@
-# forjo_private
+# Spring backend example
 
 Never for Public use
