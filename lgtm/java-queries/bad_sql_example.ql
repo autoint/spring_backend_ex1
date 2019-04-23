@@ -12,6 +12,7 @@
 
 import semmle.code.java.security.SqlUnescapedLib
 import semmle.code.java.frameworks.Jdbc
+import DataFlow::PathGraph
 
 class UncontrolledStringBuilderSource extends DataFlow::ExprNode {
   UncontrolledStringBuilderSource() {
@@ -59,6 +60,6 @@ from SqlExpr s
 select s
 */
 
-from UncontrolledStringBuilderSourceFlowConfig cnfg, DataFlow::Node source, DataFlow::Node sink
-where cnfg.hasFlow(source, sink)
+from UncontrolledStringBuilderSourceFlowConfig cnfg, DataFlow::PathNode source, DataFlow::PathNode sink
+where cnfg.hasFlowPath(source, sink)
 select source, source, sink, "bad sql"
