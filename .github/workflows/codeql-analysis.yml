@@ -18,6 +18,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+      shell: bash
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
@@ -43,6 +46,11 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+    
+    - name: Get snapshot database
+      run: | 
+        codeql database bundle /home/runner/work/$REPOSITORY_NAME/codeql_databases/java -o ./snapshot-java.zip --include-results
+        ls -al
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
@@ -58,3 +66,9 @@ jobs:
         name: code_scanning
         path: ../results
     
+    - name: Upload CodeQL Database
+      uses: actions/upload-artifact@v1.0.0
+      with:
+      # Artifact name
+        name: codeql_database
+        path: snapshot-java.zp
