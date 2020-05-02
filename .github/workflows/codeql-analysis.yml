@@ -49,7 +49,7 @@ jobs:
     
     - name: Get snapshot database
       run: | 
-        /opt/hostedtoolcache/CodeQL/1.0.0/x64/codeql/codeql database bundle /home/runner/work/$REPOSITORY_NAME/codeql_databases/java -o ./snapshot-java.zip --include-results
+        /opt/hostedtoolcache/CodeQL/1.0.0/x64/codeql/codeql database bundle /home/runner/work/$REPOSITORY_NAME/codeql_databases/java -o ./spring_backend_ex1-snapshot-java.zip --include-results
         ls -al
 
     #- name: Upload artifact
@@ -70,5 +70,5 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
       # Artifact name
-        name: codeql_database
-        path: snapshot-java.zip
+        name: spring_backend_ex1-snapshot
+        path: spring_backend_ex1-snapshot-java.zip
