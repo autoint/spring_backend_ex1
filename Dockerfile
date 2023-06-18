@@ -4,7 +4,7 @@ COPY . .
 
 RUN mvn package -DskipTests
 
-FROM java:8
+FROM FROM openjdk:11
 
 RUN mkdir /var/www && chmod o+w /var/www && mkdir /var/www/uploads
 
